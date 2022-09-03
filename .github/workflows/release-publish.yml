@@ -48,6 +48,7 @@ jobs:
         type:
           - proxy
           - ldap
+          - radius
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
@@ -93,6 +94,7 @@ jobs:
         type:
           - proxy
           - ldap
+          - radius
         goos: [linux, darwin]
         goarch: [amd64, arm64]
     steps:

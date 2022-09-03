@@ -12,6 +12,7 @@ import "@goauthentik/web/pages/providers/ldap/LDAPProviderForm";
 import "@goauthentik/web/pages/providers/oauth2/OAuth2ProviderForm";
 import "@goauthentik/web/pages/providers/proxy/ProxyProviderForm";
 import "@goauthentik/web/pages/providers/saml/SAMLProviderForm";
+import "@goauthentik/web/pages/providers/radius/RadiusProviderForm";
 
 import { t } from "@lingui/macro";
 

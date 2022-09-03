@@ -15,13 +15,13 @@ import (
 
 var (
 	Requests = promauto.NewHistogramVec(prometheus.HistogramOpts{
-		Name: "authentik_outpost_ldap_requests",
-		Help: "The total number number of successful requests",
-	}, []string{"outpost_name", "type", "app"})
+		Name: "authentik_outpost_radius_requests",
+		Help: "The total number of successful requests",
+	}, []string{"outpost_name", "app"})
 	RequestsRejected = promauto.NewCounterVec(prometheus.CounterOpts{
-		Name: "authentik_outpost_ldap_requests_rejected",
+		Name: "authentik_outpost_radius_requests_rejected",
 		Help: "Total number of rejected requests",
-	}, []string{"outpost_name", "type", "reason", "app"})
+	}, []string{"outpost_name", "reason", "app"})
 )
 
 func RunServer() {

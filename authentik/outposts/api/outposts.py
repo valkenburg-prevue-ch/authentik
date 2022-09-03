@@ -22,6 +22,7 @@ from authentik.outposts.apps import MANAGED_OUTPOST
 from authentik.outposts.models import Outpost, OutpostConfig, OutpostType, default_outpost_config
 from authentik.providers.ldap.models import LDAPProvider
 from authentik.providers.proxy.models import ProxyProvider
+from authentik.providers.radius.models import RadiusProvider
 
 
 class OutpostSerializer(ModelSerializer):
@@ -45,6 +46,7 @@ class OutpostSerializer(ModelSerializer):
         type_map = {
             OutpostType.LDAP: LDAPProvider,
             OutpostType.PROXY: ProxyProvider,
+            OutpostType.RADIUS: RadiusProvider,
             None: Provider,
         }
         for provider in providers:

@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     "authentik.providers.ldap",
     "authentik.providers.oauth2",
     "authentik.providers.proxy",
+    "authentik.providers.radius",
     "authentik.providers.saml",
     "authentik.recovery",
     "authentik.sources.ldap",

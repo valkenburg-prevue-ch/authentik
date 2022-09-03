@@ -92,16 +92,6 @@ func (db *DirectBinder) Bind(username string, req *bind.Request) (ldap.LDAPResul
 	}
 
 	access, err := fe.CheckApplicationAccess(db.si.GetAppSlug())
-	if !access {
-		req.Log().Info("Access denied for user")
-		metrics.RequestsRejected.With(prometheus.Labels{
-			"outpost_name": db.si.GetOutpostName(),
-			"type":         "bind",
-			"reason":       "access_denied",
-			"app":          db.si.GetAppSlug(),
-		}).Inc()
-		return ldap.LDAPResultInsufficientAccessRights, nil
-	}
 	if err != nil {
 		metrics.RequestsRejected.With(prometheus.Labels{
 			"outpost_name": db.si.GetOutpostName(),
@@ -111,6 +101,16 @@ func (db *DirectBinder) Bind(username string, req *bind.Request) (ldap.LDAPResul
 		}).Inc()
 		req.Log().WithError(err).Warning("failed to check access")
 		return ldap.LDAPResultOperationsError, nil
+	}
+	if !access {
+		req.Log().Info("Access denied for user")
+		metrics.RequestsRejected.With(prometheus.Labels{
+			"outpost_name": db.si.GetOutpostName(),
+			"type":         "bind",
+			"reason":       "access_denied",
+			"app":          db.si.GetAppSlug(),
+		}).Inc()
+		return ldap.LDAPResultInsufficientAccessRights, nil
 	}
 	req.Log().Info("User has access")
 	uisp := sentry.StartSpan(req.Context(), "authentik.providers.ldap.bind.user_info")

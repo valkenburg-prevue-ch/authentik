@@ -71,4 +71,5 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	layeh.com/radius v0.0.0-20210819152912-ad72663a72ab // indirect
 )
