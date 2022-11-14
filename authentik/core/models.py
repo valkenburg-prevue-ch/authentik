@@ -275,6 +275,14 @@ class Provider(SerializerModel):
         help_text=_("Flow used when authorizing this provider."),
         related_name="provider_authorization",
     )
+    invalidation_flow = models.ForeignKey(
+        "authentik_flows.Flow",
+        on_delete=models.SET_DEFAULT,
+        default=None,
+        null=True,
+        help_text=_("Flow used ending the session from a provider."),
+        related_name="provider_invalidation",
+    )
 
     property_mappings = models.ManyToManyField("PropertyMapping", default=None, blank=True)
 
