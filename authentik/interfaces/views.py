@@ -21,7 +21,6 @@ from authentik.flows.models import Flow
 from authentik.interfaces.models import Interface, InterfaceType
 from authentik.lib.utils.urls import reverse_with_qs
 from authentik.tenants.api import CurrentTenantSerializer
-from authentik.tenants.models import Tenant
 from authentik.tenants.utils import get_tenant
 
 LOGGER = get_logger()

@@ -1,6 +1,5 @@
 """Tenant utilities"""
-from functools import cache
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 from django.db.models import F, Q
 from django.db.models import Value as V
@@ -9,12 +8,8 @@ from rest_framework.request import Request
 from sentry_sdk.hub import Hub
 
 from authentik import get_full_version
-from authentik.lib.config import CONFIG
-
-if TYPE_CHECKING:
-    from authentik.tenants.models import Tenant
-
 from authentik.interfaces.models import Interface, InterfaceType
+from authentik.lib.config import CONFIG
 from authentik.tenants.models import Tenant
 
 _q_default = Q(default=True)
@@ -45,8 +40,6 @@ def get_tenant(request: HttpRequest | Request) -> "Tenant":
 
 def lookup_tenant_for_request(request: HttpRequest) -> "Tenant":
     """Get tenant object for current request"""
-    from authentik.tenants.models import Tenant
-
     db_tenants = (
         Tenant.objects.annotate(host_domain=V(request.get_host()))
         .filter(Q(host_domain__iendswith=F("domain")) | _q_default)

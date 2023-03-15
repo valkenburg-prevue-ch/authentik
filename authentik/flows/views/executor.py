@@ -59,7 +59,6 @@ from authentik.lib.utils.errors import exception_to_string
 from authentik.lib.utils.reflection import all_subclasses, class_to_path
 from authentik.lib.utils.urls import is_url_absolute, redirect_with_qs
 from authentik.policies.engine import PolicyEngine
-from authentik.tenants.models import Tenant
 from authentik.tenants.utils import get_tenant
 
 LOGGER = get_logger()
