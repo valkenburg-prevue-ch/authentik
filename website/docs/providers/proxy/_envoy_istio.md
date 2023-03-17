@@ -45,4 +45,9 @@ spec:
                     hosts:
                         # You can create a single resource and list all Domain names here, or create multiple resources
                         - "app.company"
+                    # Uncomment the next lines to allow for unauhtenticated access to all /.well-known/acme-challenge/* paths, 
+                    # which is imperative if you use letsencrypt with an http acme challenge for generating your https certificates.
+                    # notPaths: # enable letsencrypt on ingress with custom rules.
+                    #     - "/.well-known/acme-challenge/*"
+
 ```
